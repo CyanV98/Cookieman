@@ -5,6 +5,7 @@ namespace Grid
     public class GridObject
     {
         private readonly Vector2Int _cellPosition;
+        public GridObjectType Type { get; set; } = GridObjectType.Empty;
 
         public GridObject(Vector2Int cellPosition)
         {
@@ -20,5 +21,12 @@ namespace Grid
         {
             return _cellPosition;
         }
+    }
+
+    public enum GridObjectType
+    {
+        Empty = 0,
+        Wall = 1,
+        Path = 2
     }
 }

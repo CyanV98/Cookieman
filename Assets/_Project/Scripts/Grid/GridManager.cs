@@ -1,3 +1,5 @@
+using System;
+using Tiles;
 using UnityEditor;
 using UnityEngine;
 using UnityEngine.Tilemaps;
@@ -34,6 +36,32 @@ namespace Grid
             tilemap.CompressBounds();
             _grid = new GameGrid(tilemap.size.x, tilemap.size.y);
             _gridRenderer = new GridRenderer(tilemap.origin);
+
+            foreach (var gridObject in _grid.GetGridObjects())
+            {
+                int xPos = gridObject.GetCellPosition().x;
+                int yPos = gridObject.GetCellPosition().y;
+                Vector3 objectWorldPosition = _gridRenderer.GetWorldPosition(xPos, yPos);
+
+                int xVal = Mathf.FloorToInt(objectWorldPosition.x);
+                int yVal = Mathf.FloorToInt(objectWorldPosition.y);
+                
+                var tile = tilemap.GetTile(new Vector3Int(xVal, yVal, 0));
+                
+                if(!tile) continue;
+                
+                Type tileType = tile.GetType();
+
+                if (tileType == typeof(Wall))
+                {
+                    gridObject.Type = GridObjectType.Wall;
+                }
+                
+                if (tileType == typeof(Path))
+                {
+                    gridObject.Type =  GridObjectType.Path;
+                }
+            }
         }
 
         public void RegenerateGrid()
