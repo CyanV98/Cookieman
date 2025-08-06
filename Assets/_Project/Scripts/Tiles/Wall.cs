@@ -8,7 +8,7 @@ namespace Tiles
     public class Wall : RuleTile<Wall.Neighbor>
     {
         [SerializeField] private List<TileBase> walkableTiles;
-        
+
         public class Neighbor : RuleTile.TilingRule.Neighbor
         {
             public const int Path = 3;
@@ -20,7 +20,7 @@ namespace Tiles
             {
                 case Neighbor.Path: return walkableTiles.Contains(tile);
             }
-            
+
             return base.RuleMatch(neighbor, tile);
         }
     }
