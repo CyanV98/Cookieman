@@ -7,7 +7,7 @@ using UnityEngine.Tilemaps;
 namespace Grid
 {
     [ExecuteAlways]
-    public class GridManager : MonoBehaviour
+    public class GridManager : MonoBehaviour //TODO To DI
     {
         [SerializeField] private Tilemap tilemap;
 
@@ -15,7 +15,7 @@ namespace Grid
         private GridRenderer _gridRenderer;
         private bool _showGrid;
 
-        public static GridManager Instance { get; private set; }
+        public static GridManager Instance { get; private set; } //TODO Remove after DI
 
         private void Awake()
         {
@@ -39,9 +39,7 @@ namespace Grid
 
             foreach (var gridObject in _grid.GetGridObjects())
             {
-                int xPos = gridObject.GetCellPosition().x;
-                int yPos = gridObject.GetCellPosition().y;
-                Vector3 objectWorldPosition = _gridRenderer.GetWorldPosition(xPos, yPos);
+                Vector3 objectWorldPosition = _gridRenderer.GetWorldPosition(gridObject.GetCellPosition());
 
                 int xVal = Mathf.FloorToInt(objectWorldPosition.x);
                 int yVal = Mathf.FloorToInt(objectWorldPosition.y);
@@ -85,11 +83,11 @@ namespace Grid
 
             foreach (GridObject gridObject in gridObjects)
             {
-                int cellPosX = gridObject.GetCellPosition().x;
-                int cellPosY = gridObject.GetCellPosition().y;
+                GridCell currentCell = gridObject.GetCellPosition();
+                Vector3 cellWorldPosition = _gridRenderer.GetWorldPosition(currentCell);
 
-                int xPos = (int)_gridRenderer.GetWorldPosition(cellPosX, cellPosY).x;
-                int yPos = (int)_gridRenderer.GetWorldPosition(cellPosX, cellPosY).y;
+                int xPos = (int)cellWorldPosition.x;
+                int yPos = (int)cellWorldPosition.y;
 
                 Vector3 startVertical = new(xPos, yPos);
                 Vector3 endVertical = new(xPos, yPos + 1);
@@ -99,27 +97,42 @@ namespace Grid
                 Vector3 endHorizontal = new(xPos + 1, yPos);
                 Gizmos.DrawLine(startHorizontal, endHorizontal);
 
-                // Draw Grid Position Text
-                GUIStyle textStyle = new();
-                textStyle.normal.textColor = Color.white;
-                textStyle.alignment = TextAnchor.MiddleCenter;
-
                 Vector3 cellCenter = new(xPos + 0.5f, yPos + 0.5f);
-                Handles.Label(cellCenter, $"({cellPosX}, {cellPosY})", textStyle);
+
+                if (gridObject.Type == GridObjectType.Wall)
+                {
+                    GUIStyle wallTextStyle = new()
+                    {
+                        normal = { textColor = Color.orange },
+                        alignment = TextAnchor.MiddleCenter,
+                        fontStyle = FontStyle.Bold,
+                        fontSize = 12
+                    };
+                    Handles.Label(cellCenter, $"Wall", wallTextStyle);
+                }
+                if(gridObject.Type == GridObjectType.Path)
+                {
+                    GUIStyle textStyle = new()
+                    {
+                        normal = { textColor = Color.white },
+                        alignment = TextAnchor.MiddleCenter
+                    };
+                    Handles.Label(cellCenter, $"({currentCell.X}, {currentCell.Y})", textStyle);
+                }
             }
 
             int tilemapWidth = _grid.Width;
             int tilemapHeight = _grid.Height;
 
-            Vector3 tilemapEndWorldSpace = _gridRenderer.GetWorldPosition(tilemapWidth, tilemapHeight);
+            Vector3 firstCellWorldSpace = _gridRenderer.GetWorldPosition(new GridCell(0, 0));
+            Vector3 lastCellWorldSpace = _gridRenderer.GetWorldPosition(new GridCell(tilemapWidth,tilemapHeight));
 
-            float originWorldSpaceX = _gridRenderer.GetWorldPosition(0, 0).x;
-            float originWorldSpaceY = _gridRenderer.GetWorldPosition(0, 0).y;
+            float originWorldSpaceX = firstCellWorldSpace.x;
+            float originWorldSpaceY = firstCellWorldSpace.y;
 
-            float widthWorldSpace = tilemapEndWorldSpace.x;
-            float heightWorldSpace = tilemapEndWorldSpace.y;
-
-            // Draw one more row/column
+            float widthWorldSpace = lastCellWorldSpace.x;
+            float heightWorldSpace = lastCellWorldSpace.y;
+            
             Vector3 finalStartVertical = new(widthWorldSpace, originWorldSpaceY);
             Vector3 finalEndVertical = new(widthWorldSpace, heightWorldSpace);
             Gizmos.DrawLine(finalStartVertical, finalEndVertical);

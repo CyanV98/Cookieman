@@ -4,10 +4,10 @@ namespace Grid
 {
     public class GridObject
     {
-        private readonly Vector2Int _cellPosition;
+        private readonly GridCell _cellPosition;
         public GridObjectType Type { get; set; } = GridObjectType.Empty;
 
-        public GridObject(Vector2Int cellPosition)
+        public GridObject(GridCell cellPosition)
         {
             _cellPosition = cellPosition;
         }
@@ -17,7 +17,7 @@ namespace Grid
             return "GridObject: " + _cellPosition;
         }
 
-        public Vector2Int GetCellPosition()
+        public GridCell GetCellPosition()
         {
             return _cellPosition;
         }

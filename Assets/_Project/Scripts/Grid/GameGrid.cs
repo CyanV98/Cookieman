@@ -1,5 +1,3 @@
-using UnityEngine;
-
 namespace Grid
 {
     public class GameGrid
@@ -23,7 +21,7 @@ namespace Grid
             for (int x = 0; x < Width; x++)
             for (int y = 0; y < Height; y++)
             {
-                Vector2Int cellPosition = new(x, y);
+                GridCell cellPosition = new(x, y);
                 _gridObjects[x, y] = new GridObject(cellPosition);
             }
         }
