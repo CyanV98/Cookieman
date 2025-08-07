@@ -6,8 +6,8 @@ namespace Grid
     {
         public int X { get; }
         public int Y { get; }
-        
-        public Vector2Int Position => new Vector2Int(X, Y);
+
+        public Vector2Int Position => new(X, Y);
 
         public GridCell(int x, int y)
         {

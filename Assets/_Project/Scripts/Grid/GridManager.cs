@@ -7,15 +7,15 @@ using UnityEngine.Tilemaps;
 namespace Grid
 {
     [ExecuteAlways]
-    public class GridManager : MonoBehaviour //TODO To DI
+    public partial class GridManager : MonoBehaviour //TODO Remove after DI
     {
+        public static GridManager Instance { get; private set; } //TODO Remove after DI
+
         [SerializeField] private Tilemap tilemap;
 
         private GameGrid _grid;
         private GridRenderer _gridRenderer;
         private bool _showGrid;
-
-        public static GridManager Instance { get; private set; } //TODO Remove after DI
 
         private void Awake()
         {
@@ -29,50 +29,35 @@ namespace Grid
 
             InitializeGrid();
         }
-        
+
         private void InitializeGrid()
         {
-            if (!tilemap) return;
+            if (tilemap == null) return;
             tilemap.CompressBounds();
-            _grid = new GameGrid(tilemap.size.x, tilemap.size.y);
-            _gridRenderer = new GridRenderer(tilemap.origin);
 
-            foreach (var gridObject in _grid.GetGridObjects())
+            _grid = new GameGrid(tilemap.size.x, tilemap.size.y);
+            _gridRenderer = new GridRenderer(tilemap.origin, _grid, tilemap.cellSize.x);
+
+            foreach (GridObject gridObject in _grid.GetGridObjects())
             {
                 Vector3 objectWorldPosition = _gridRenderer.GetWorldPosition(gridObject.GetCellPosition());
 
                 int xVal = Mathf.FloorToInt(objectWorldPosition.x);
                 int yVal = Mathf.FloorToInt(objectWorldPosition.y);
-                
-                var tile = tilemap.GetTile(new Vector3Int(xVal, yVal, 0));
-                
-                if(!tile) continue;
-                
-                Type tileType = tile.GetType();
+                TileBase tile = tilemap.GetTile(new Vector3Int(xVal, yVal, 0));
 
-                if (tileType == typeof(Wall))
-                {
-                    gridObject.Type = GridObjectType.Wall;
-                }
-                
-                if (tileType == typeof(Path))
-                {
-                    gridObject.Type =  GridObjectType.Path;
-                }
+                if (tile == null) continue;
+
+                Type tyleType = tile.GetType();
+
+                if (tyleType == typeof(Wall)) gridObject.Type = GridObjectType.Wall;
+
+                if (tyleType == typeof(Path)) gridObject.Type = GridObjectType.Path;
             }
         }
 
-        public void RegenerateGrid()
-        {
-            InitializeGrid();
-        }
-
-        public void ToggleVisibility()
-        {
-            _showGrid = !_showGrid;
-        }
-
 #if UNITY_EDITOR
+
         private void OnDrawGizmos()
         {
             if (tilemap == null || _grid == null || _showGrid == false) return;
@@ -84,6 +69,7 @@ namespace Grid
             foreach (GridObject gridObject in gridObjects)
             {
                 GridCell currentCell = gridObject.GetCellPosition();
+
                 Vector3 cellWorldPosition = _gridRenderer.GetWorldPosition(currentCell);
 
                 int xPos = (int)cellWorldPosition.x;
@@ -101,22 +87,21 @@ namespace Grid
 
                 if (gridObject.Type == GridObjectType.Wall)
                 {
-                    GUIStyle wallTextStyle = new()
-                    {
-                        normal = { textColor = Color.orange },
-                        alignment = TextAnchor.MiddleCenter,
-                        fontStyle = FontStyle.Bold,
-                        fontSize = 12
-                    };
+                    // Mark Wall Cells
+                    GUIStyle wallTextStyle = new();
+                    wallTextStyle.normal.textColor = Color.orange;
+                    wallTextStyle.fontSize = 12;
+                    wallTextStyle.fontStyle = FontStyle.Bold;
+                    wallTextStyle.alignment = TextAnchor.MiddleCenter;
                     Handles.Label(cellCenter, $"Wall", wallTextStyle);
                 }
-                if(gridObject.Type == GridObjectType.Path)
+
+                if (gridObject.Type == GridObjectType.Path)
                 {
-                    GUIStyle textStyle = new()
-                    {
-                        normal = { textColor = Color.white },
-                        alignment = TextAnchor.MiddleCenter
-                    };
+                    // Draw Grid Position Text
+                    GUIStyle textStyle = new();
+                    textStyle.normal.textColor = Color.white;
+                    textStyle.alignment = TextAnchor.MiddleCenter;
                     Handles.Label(cellCenter, $"({currentCell.X}, {currentCell.Y})", textStyle);
                 }
             }
@@ -125,14 +110,15 @@ namespace Grid
             int tilemapHeight = _grid.Height;
 
             Vector3 firstCellWorldSpace = _gridRenderer.GetWorldPosition(new GridCell(0, 0));
-            Vector3 lastCellWorldSpace = _gridRenderer.GetWorldPosition(new GridCell(tilemapWidth,tilemapHeight));
+            Vector3 lastCellWorldSpace = _gridRenderer.GetWorldPosition(new GridCell(tilemapWidth, tilemapHeight));
 
             float originWorldSpaceX = firstCellWorldSpace.x;
             float originWorldSpaceY = firstCellWorldSpace.y;
 
             float widthWorldSpace = lastCellWorldSpace.x;
             float heightWorldSpace = lastCellWorldSpace.y;
-            
+
+            // Draw one more row/column
             Vector3 finalStartVertical = new(widthWorldSpace, originWorldSpaceY);
             Vector3 finalEndVertical = new(widthWorldSpace, heightWorldSpace);
             Gizmos.DrawLine(finalStartVertical, finalEndVertical);
@@ -141,6 +127,17 @@ namespace Grid
             Vector3 finalEndHorizontal = new(widthWorldSpace, heightWorldSpace);
             Gizmos.DrawLine(finalStartHorizontal, finalEndHorizontal);
         }
+
 #endif
+
+        public void RegenerateGrid()
+        {
+            InitializeGrid();
+        }
+
+        public void ToggleVisibility()
+        {
+            _showGrid = !_showGrid;
+        }
     }
 }
