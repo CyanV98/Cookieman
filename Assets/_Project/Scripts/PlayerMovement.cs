@@ -5,6 +5,8 @@ using UnityEngine.InputSystem;
 
 public class PlayerMovement : MonoBehaviour
 {
+    public event Action<Vector2> OnDirectionChanged;
+    
     [SerializeField] private int speed = 3;
 
     private bool _shouldMove = false;
@@ -52,6 +54,8 @@ public class PlayerMovement : MonoBehaviour
 
         // fix for oscillating on one axis
         HandleDirSwitch(newDirection);
+        
+        OnDirectionChanged?.Invoke(newDirection);
     }
 
     private void HandleDirSwitch(Vector2 newDirection)
