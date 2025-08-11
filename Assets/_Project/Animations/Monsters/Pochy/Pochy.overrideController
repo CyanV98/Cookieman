@@ -1,0 +1,19 @@
+%YAML 1.1
+%TAG !u! tag:unity3d.com,2011:
+--- !u!221 &22100000
+AnimatorOverrideController:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_Name: Pochy
+  m_Controller: {fileID: 9100000, guid: 87f5e93696705f94e9fa175a779a7679, type: 2}
+  m_Clips:
+  - m_OriginalClip: {fileID: 7400000, guid: 5a364763500575546857b3d55c0e21be, type: 2}
+    m_OverrideClip: {fileID: 7400000, guid: 13e31f53d5e648e42b61bd2b9fed8855, type: 2}
+  - m_OriginalClip: {fileID: 7400000, guid: 44fbae96f94c7484584826bc80a8c978, type: 2}
+    m_OverrideClip: {fileID: 7400000, guid: 15e09435d7515284ab0467ca6bc4511a, type: 2}
+  - m_OriginalClip: {fileID: 7400000, guid: e0469ad3ca1e9dc4a8d48fb8038d1214, type: 2}
+    m_OverrideClip: {fileID: 7400000, guid: 91013cc0d4b17284ab4fbae5412a4f4e, type: 2}
+  - m_OriginalClip: {fileID: 7400000, guid: e46b64284839e5640804646ed66e75f6, type: 2}
+    m_OverrideClip: {fileID: 7400000, guid: 3ab4e1674daf711439fdb946c5886bb8, type: 2}
