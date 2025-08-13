@@ -37,5 +37,10 @@ namespace Grid
             GridCell cell = _gridRenderer.GetCell(worldPos);
             return _gridRenderer.GetCellCenter(cell);
         }
+
+        public Vector3 GetNonWalkableStartPosition()
+        {
+            return _gridRenderer.GetWorldPosition(new GridCell(0, 0));
+        }
     }
 }
