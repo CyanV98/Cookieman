@@ -30,6 +30,8 @@ namespace Monsters.Debug
 
         private void UpdatePathProjection()
         {
+            if(_monster.RandomMovement) return;
+            
             Vector2 finalTarget = _monster.FinalTarget;
             (Vector2 newDir, Vector2 newTarget) nextResult = (_monster.CurrentDir, _monster.CurrentTarget);
 

@@ -2,26 +2,18 @@
 using System.Collections.Generic;
 using Grid;
 using UnityEngine;
+using Random = UnityEngine.Random;
 
 namespace Monsters
 {
     public static class AINavigation
     {
-        public static (Vector2 newDir, Vector3 newTarget) GetNextIntermediateTarget(Vector2 currentDir, Vector3 currentPos, Vector3 finalTargetPos)
+        public static (Vector2 newDir, Vector3 newTarget) GetNextIntermediateTarget(Vector2 currentDir,
+            Vector3 currentPos, Vector3 finalTargetPos)
         {
             GridManager grid = GridManager.Instance;
 
-            List<Vector2> walkableDirs = new List<Vector2>();
-
-            foreach (Vector2 possibleDir in GetValidDirections())
-            {
-                if (Is180Turn(currentDir, possibleDir)) continue;
-            
-                if (grid.IsNeighborCellWalkable(currentPos, possibleDir))
-                {
-                    walkableDirs.Add(possibleDir);
-                }
-            }
+            List<Vector2> walkableDirs = GetWalkableDirections(currentDir, currentPos, grid);
 
             Vector3 intermediateTarget = currentPos;
             Vector2 nextDir = default;
@@ -62,7 +54,7 @@ namespace Monsters
         }
 
         public static bool HasReachedTargetCellCenter(Vector2 dir, Vector3 currentPos, Vector3 targetPos)
-        {   
+        {
             GridManager grid = GridManager.Instance;
 
             Vector2 currentCellPos = grid.GetCellPosition(currentPos);
@@ -72,17 +64,38 @@ namespace Monsters
 
             return grid.HasReachedCellCenterInDirection(dir, currentPos);
         }
-    
-    
-    
-    
-    
-    
-    
-    
-    
-    
-    
-    
+
+        public static (Vector2 newDir, Vector3 newTarget) GetNextRandomTarget(Vector2 currentDir,
+            Vector3 currentPos)
+        {
+            GridManager grid = GridManager.Instance;
+
+            List<Vector2> walkableDirs = GetWalkableDirections(currentDir, currentPos, grid);
+
+            Vector3 intermediateTarget = currentPos;
+
+            Vector2 decidedDirection = walkableDirs[Random.Range(0, walkableDirs.Count)];
+            
+            intermediateTarget = grid.GetNeighborCellPosition(currentPos, decidedDirection);
+            
+            return (decidedDirection, intermediateTarget);
+        }
+
+        private static List<Vector2> GetWalkableDirections(Vector2 currentDir, Vector3 currentPos, GridManager grid)
+        {
+            List<Vector2> walkableDirs = new();
+
+            foreach (Vector2 possibleDir in GetValidDirections())
+            {
+                if (Is180Turn(currentDir, possibleDir)) continue;
+
+                if (grid.IsNeighborCellWalkable(currentPos, possibleDir))
+                {
+                    walkableDirs.Add(possibleDir);
+                }
+            }
+
+            return walkableDirs;
+        }
     }
 }
