@@ -16,6 +16,14 @@ namespace Grid
             GridObject gridObj = _grid.GetGridObjects()[neighborCell.X, neighborCell.Y];
             return gridObj.Type == GridObjectType.Path;
         }
+        
+        public bool IsNeighborCellAIWalkable(Vector3 currentPos, Vector2 direction)
+        {
+            GridCell neighborCell = GetNeighborCell(currentPos, direction);
+
+            GridObject gridObj = _grid.GetGridObjects()[neighborCell.X, neighborCell.Y];
+            return gridObj.Type is GridObjectType.Path or GridObjectType.Chamber;
+        }
 
         public GridCell GetNeighborCell(Vector3 currentPos, Vector2 direction)
         {

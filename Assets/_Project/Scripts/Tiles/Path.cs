@@ -9,7 +9,7 @@ namespace Tiles
     {
         [SerializeField] private List<TileBase> wallTiles;
 
-        public class Neighbor : RuleTile.TilingRule.Neighbor
+        public class Neighbor : RuleTile.TilingRuleOutput.Neighbor
         {
             public const int Wall = 4;
         }

@@ -13,7 +13,17 @@ namespace Monsters
         {
             GridManager grid = GridManager.Instance;
 
-            List<Vector2> walkableDirs = GetWalkableDirections(currentDir, currentPos, grid);
+            List<Vector2> walkableDirs = new();
+
+            foreach (Vector2 possibleDir in GetValidDirections())
+            {
+                if (Is180Turn(currentDir, possibleDir)) continue;
+
+                if (grid.IsNeighborCellWalkable(currentPos, possibleDir))
+                {
+                    walkableDirs.Add(possibleDir);
+                }
+            }
 
             Vector3 intermediateTarget = currentPos;
             Vector2 nextDir = default;
@@ -70,19 +80,6 @@ namespace Monsters
         {
             GridManager grid = GridManager.Instance;
 
-            List<Vector2> walkableDirs = GetWalkableDirections(currentDir, currentPos, grid);
-
-            Vector3 intermediateTarget = currentPos;
-
-            Vector2 decidedDirection = walkableDirs[Random.Range(0, walkableDirs.Count)];
-            
-            intermediateTarget = grid.GetNeighborCellPosition(currentPos, decidedDirection);
-            
-            return (decidedDirection, intermediateTarget);
-        }
-
-        private static List<Vector2> GetWalkableDirections(Vector2 currentDir, Vector3 currentPos, GridManager grid)
-        {
             List<Vector2> walkableDirs = new();
 
             foreach (Vector2 possibleDir in GetValidDirections())
@@ -95,7 +92,13 @@ namespace Monsters
                 }
             }
 
-            return walkableDirs;
+            Vector3 intermediateTarget = currentPos;
+
+            Vector2 decidedDirection = walkableDirs[Random.Range(0, walkableDirs.Count)];
+
+            intermediateTarget = grid.GetNeighborCellPosition(currentPos, decidedDirection);
+
+            return (decidedDirection, intermediateTarget);
         }
     }
 }

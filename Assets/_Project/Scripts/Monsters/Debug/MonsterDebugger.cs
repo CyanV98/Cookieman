@@ -35,7 +35,7 @@ namespace Monsters.Debug
             Vector2 finalTarget = _monster.FinalTarget;
             (Vector2 newDir, Vector2 newTarget) nextResult = (_monster.CurrentDir, _monster.CurrentTarget);
 
-            int counter = 100;
+            int counter = 15;
         
             while (finalTarget != nextResult.newTarget && counter > 0)
             {

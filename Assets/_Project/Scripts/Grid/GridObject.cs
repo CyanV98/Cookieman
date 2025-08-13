@@ -24,8 +24,9 @@ namespace Grid
 
     public enum GridObjectType
     {
-        Wall,
-        Path,
-        Empty
+        Empty = 0,
+        Wall = 1,
+        Path = 2,
+        Chamber = 3
     }
 }

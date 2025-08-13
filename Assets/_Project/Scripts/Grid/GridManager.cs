@@ -53,6 +53,8 @@ namespace Grid
                 if (tyleType == typeof(Wall)) gridObject.Type = GridObjectType.Wall;
 
                 if (tyleType == typeof(Path)) gridObject.Type = GridObjectType.Path;
+                
+                if (tyleType == typeof(Chamber)) gridObject.Type = GridObjectType.Chamber;
             }
         }
 
@@ -87,7 +89,6 @@ namespace Grid
 
                 if (gridObject.Type == GridObjectType.Wall)
                 {
-                    // Mark Wall Cells
                     GUIStyle wallTextStyle = new();
                     wallTextStyle.normal.textColor = Color.orange;
                     wallTextStyle.fontSize = 12;
@@ -98,11 +99,20 @@ namespace Grid
 
                 if (gridObject.Type == GridObjectType.Path)
                 {
-                    // Draw Grid Position Text
                     GUIStyle textStyle = new();
                     textStyle.normal.textColor = Color.white;
                     textStyle.alignment = TextAnchor.MiddleCenter;
                     Handles.Label(cellCenter, $"({currentCell.X}, {currentCell.Y})", textStyle);
+                }
+                
+                if (gridObject.Type == GridObjectType.Chamber)
+                {
+                    GUIStyle chamberStyle = new();
+                    chamberStyle.normal.textColor = Color.magenta;
+                    chamberStyle.fontSize = 12;
+                    chamberStyle.fontStyle = FontStyle.Bold;
+                    chamberStyle.alignment = TextAnchor.MiddleCenter;
+                    Handles.Label(cellCenter, $"Chamber", chamberStyle);
                 }
             }
 
