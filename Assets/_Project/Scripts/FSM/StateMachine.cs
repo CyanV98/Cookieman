@@ -2,7 +2,7 @@
 
 namespace FSM
 {
-        [CreateAssetMenu(menuName = "CookieMan/FSM/State Machine")]
+        [CreateAssetMenu(menuName = "Cookieman/FSM/State Machine")]
         public class StateMachine : ScriptableObject
         {
                 public State initialState;

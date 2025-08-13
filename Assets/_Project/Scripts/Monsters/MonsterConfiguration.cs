@@ -5,8 +5,8 @@ namespace Monsters
     [CreateAssetMenu(fileName = "new MonsterConfiguration", menuName = "Cookieman/Configurations/Monster")]
     public class MonsterConfiguration : ScriptableObject
     {
-        [SerializeField] private Color color;
+        [field: SerializeField] public Color Color { get; private set; }
+        [field: SerializeField] public Vector3 ScatterPosition { get; private set; }
 
-        public Color Color => color;
     }
 }

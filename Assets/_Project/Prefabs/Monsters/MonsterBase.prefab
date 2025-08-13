@@ -13,6 +13,7 @@ GameObject:
   - component: {fileID: 2286506716616580698}
   - component: {fileID: 6618708337581121319}
   - component: {fileID: 6301392946811383623}
+  - component: {fileID: 5829150706625542478}
   m_Layer: 0
   m_Name: MonsterBase
   m_TagString: Untagged
@@ -143,3 +144,16 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: Assembly-CSharp::NPC_Debugger
   pathPrefab: {fileID: 5092685129768816471, guid: f01a3b03132d3f245b4655390e13bc9b, type: 3}
+--- !u!114 &5829150706625542478
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 3129386962274310997}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 3fc105502a9140918abc89e7bc7ade34, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: Assembly-CSharp::FSM.StateMachineRunner
+  stateMachine: {fileID: 11400000, guid: d748d54c57effce4986259aa2228fbe4, type: 2}
