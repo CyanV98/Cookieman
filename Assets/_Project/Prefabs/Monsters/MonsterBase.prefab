@@ -10,6 +10,7 @@ GameObject:
   m_Component:
   - component: {fileID: 1169885138458984770}
   - component: {fileID: 933797175557075629}
+  - component: {fileID: -6800133662401593545}
   - component: {fileID: 2286506716616580698}
   - component: {fileID: 6618708337581121319}
   - component: {fileID: 6301392946811383623}
@@ -94,6 +95,18 @@ SpriteRenderer:
   m_WasSpriteAssigned: 1
   m_MaskInteraction: 0
   m_SpriteSortPoint: 0
+--- !u!114 &-6800133662401593545
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 3129386962274310997}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: f6ac33fa87a40e846b10235544bb5972, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: Assembly-CSharp::MonsterAnimator
 --- !u!95 &2286506716616580698
 Animator:
   serializedVersion: 7

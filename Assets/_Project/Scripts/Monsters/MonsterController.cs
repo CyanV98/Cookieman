@@ -1,3 +1,4 @@
+using System;
 using Grid;
 using UnityEngine;
 
@@ -9,6 +10,8 @@ namespace Monsters
         [SerializeField] private int speed = 3;
         [field: SerializeField] public MonsterConfiguration Configuration { get; private set; }
 
+        public event Action<Vector2> OnDirectionChanged;
+        
         private GridManager _grid;
         private Vector2 _currentTarget;
         private Vector2 _currentDir;
@@ -34,7 +37,11 @@ namespace Monsters
         public Vector2 CurrentDir
         {
             get => _currentDir;
-            set => _currentDir = value;
+            set
+            {
+                _currentDir = value;
+                OnDirectionChanged?.Invoke(value);
+            }
         }
 
         public bool RandomMovement
@@ -76,7 +83,7 @@ namespace Monsters
             else
                 result = AINavigation.GetNextIntermediateTarget(_currentDir, currentPos, finalTargetPos);
 
-            _currentDir = result.newDir;
+            CurrentDir = result.newDir;
             _currentTarget = result.newTarget;
         }
     }

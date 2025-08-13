@@ -8,7 +8,7 @@ namespace FSM.States
     {
         public override void Enter(GameObject owner, StateContext context)
         {
-            
+            owner.GetComponent<MonsterAnimator>().SetDefault(true);
         }
 
         public override void Tick(GameObject owner, StateContext context)
@@ -18,7 +18,7 @@ namespace FSM.States
 
         public override void Exit(GameObject owner, StateContext context)
         {
-            
+            owner.GetComponent<MonsterAnimator>().SetDefault(false);
         }
     }
 }
