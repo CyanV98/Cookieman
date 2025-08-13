@@ -12,5 +12,5 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 13bc7fcbc1535aa4396db690430cb7f8, type: 3}
   m_Name: Freezy
   m_EditorClassIdentifier: Assembly-CSharp::Monsters.MonsterConfiguration
-  <Color>k__BackingField: {r: 0, g: 0, b: 0, a: 0}
+  <Color>k__BackingField: {r: 0.17254902, g: 0.8078432, b: 0.9803922, a: 1}
   <ScatterPosition>k__BackingField: {x: -13.5, y: 14.5, z: 0}

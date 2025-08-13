@@ -7,6 +7,7 @@ namespace Monsters
     {
         [field: SerializeField] public Color Color { get; private set; }
         [field: SerializeField] public Vector3 ScatterPosition { get; private set; }
+        [field: SerializeField] public Vector3 ChaseDefaultPosition { get; private set; }
 
     }
 }

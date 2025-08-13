@@ -9,8 +9,6 @@ MonoBehaviour:
   m_GameObject: {fileID: 0}
   m_Enabled: 1
   m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 7eec392b108b4fb199b17eef1aafe3ed, type: 3}
-  m_Name: Monster_FSM
-  m_EditorClassIdentifier: Assembly-CSharp::FSM.StateMachine
-  initialState: {fileID: 11400000, guid: dafd45ba1fef7e041804a34d75c5821a, type: 2}
-  transitions: []
+  m_Script: {fileID: 11500000, guid: f1d896a33c68fb14faa5cf759697a988, type: 3}
+  m_Name: ChaseState
+  m_EditorClassIdentifier: Assembly-CSharp::FSM.States.ChaseState

@@ -6,7 +6,7 @@ namespace Monsters
     public class MonsterController : MonoBehaviour
     {
         [SerializeField] private Transform player;
-        [SerializeField] private int speed = 2;
+        [SerializeField] private int speed = 3;
         [field:SerializeField] public MonsterConfiguration Configuration { get; private set; }
 
         private GridManager _grid;
@@ -34,6 +34,8 @@ namespace Monsters
             get => _currentDir;
             set => _currentDir = value;
         }
+
+        public virtual void SetChaseTarget() { }
 
 
         private void Start()

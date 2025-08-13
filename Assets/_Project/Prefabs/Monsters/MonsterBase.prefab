@@ -129,7 +129,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: Assembly-CSharp::NPC_Controller
   player: {fileID: 0}
-  speed: 2
+  speed: 3
   <Configuration>k__BackingField: {fileID: 0}
 --- !u!114 &6301392946811383623
 MonoBehaviour:

@@ -64,8 +64,33 @@ PrefabInstance:
       propertyPath: <Configuration>k__BackingField
       value: 
       objectReference: {fileID: 11400000, guid: 6099a99525f00db488429daee1afdf5d, type: 2}
-    m_RemovedComponents: []
+    m_RemovedComponents:
+    - {fileID: 6618708337581121319, guid: 0efd5ee96282d09468591e7134c39205, type: 3}
     m_RemovedGameObjects: []
     m_AddedGameObjects: []
-    m_AddedComponents: []
+    m_AddedComponents:
+    - targetCorrespondingSourceObject: {fileID: 3129386962274310997, guid: 0efd5ee96282d09468591e7134c39205, type: 3}
+      insertIndex: 3
+      addedObject: {fileID: 4874728678784767950}
   m_SourcePrefab: {fileID: 100100000, guid: 0efd5ee96282d09468591e7134c39205, type: 3}
+--- !u!1 &552143330280958 stripped
+GameObject:
+  m_CorrespondingSourceObject: {fileID: 3129386962274310997, guid: 0efd5ee96282d09468591e7134c39205, type: 3}
+  m_PrefabInstance: {fileID: 3128918684622937771}
+  m_PrefabAsset: {fileID: 0}
+--- !u!114 &4874728678784767950
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 552143330280958}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: b52922b185d242eb8161709d0660c28c, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: Assembly-CSharp::Monsters.FreezyController
+  player: {fileID: 0}
+  speed: 3
+  <Configuration>k__BackingField: {fileID: 11400000, guid: 6099a99525f00db488429daee1afdf5d, type: 2}
+  distance: 6

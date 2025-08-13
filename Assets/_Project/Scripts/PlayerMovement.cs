@@ -9,6 +9,8 @@ public class PlayerMovement : MonoBehaviour
     
     [SerializeField] private int speed = 3;
 
+    public Vector2 Direction => _currentInputDir;
+    
     private bool _shouldMove = false;
     private Vector2 _previousInputDir;
     private Vector2 _currentInputDir;
