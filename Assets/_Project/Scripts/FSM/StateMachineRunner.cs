@@ -4,6 +4,7 @@ namespace FSM
 {
     public class StateMachineRunner : MonoBehaviour
     {   
+        [SerializeField] private LevelManager levelManager;
         public StateMachine stateMachine;
 
         private State _currentState;
@@ -11,7 +12,7 @@ namespace FSM
 
         private void Start()
         {
-            _stateContext = new StateContext();
+            _stateContext = new StateContext(levelManager);
             
             _currentState = stateMachine.initialState;
             _currentState.Enter(gameObject, _stateContext);
@@ -30,7 +31,7 @@ namespace FSM
                 {
                     _currentState.Exit(gameObject, _stateContext);
                     _currentState = transition.toState;
-                    Debug.Log($"current state: {_currentState.name}");
+                    Debug.Log($"{name} current state: {_currentState.name}");
                     _currentState.Enter(gameObject, _stateContext);
                     return;
                 }
