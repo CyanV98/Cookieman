@@ -31,8 +31,6 @@ namespace Monsters.Debug
 
         private void UpdatePathProjection()
         {
-            if(_monster.RandomMovement) return;
-            
             Vector2 finalTarget = _monster.FinalTarget;
             (Vector2 newDir, Vector2 newTarget) nextResult = (_monster.CurrentDir, _monster.CurrentTarget);
 
@@ -40,7 +38,7 @@ namespace Monsters.Debug
         
             while (finalTarget != nextResult.newTarget && counter > 0)
             {
-                nextResult = AINavigation.GetNextIntermediateTarget(nextResult.newDir, nextResult.newTarget, finalTarget);
+                nextResult = AINavigation.GetNextDefaultTarget(nextResult.newDir, nextResult.newTarget, finalTarget);
                 _pathPositions.Add(nextResult);
 
                 counter--;

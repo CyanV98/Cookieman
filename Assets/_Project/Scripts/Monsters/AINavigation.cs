@@ -7,8 +7,8 @@ namespace Monsters
 {
     public static class AINavigation
     {
-        public static (Vector2 newDir, Vector3 newTarget) GetNextIntermediateTarget(Vector2 currentDir,
-            Vector3 currentPos, Vector3 finalTargetPos)
+        public static (Vector2 newDir, Vector3 newTarget) GetNextDefaultTarget(Vector2 currentDir,
+            Vector3 currentPos, Vector3 finalTargetPos = new())
         {
             GridManager grid = GridManager.Instance;
 
@@ -23,29 +23,58 @@ namespace Monsters
                     walkableDirs.Add(possibleDir);
                 }
             }
+            
+            //if (intermediateTarget == currentPos) throw new Exception("Check intermediate target navigation");
+            return GetClosestToTarget(walkableDirs, currentPos, finalTargetPos);
+        }
+        
+        public static (Vector2 newDir, Vector3 newTarget) GetNextRandomTarget(Vector2 currentDir,
+            Vector3 currentPos, Vector3 finalTargetPos = new())
+        {
+            GridManager grid = GridManager.Instance;
+
+            List<Vector2> walkableDirs = new();
+
+            foreach (Vector2 possibleDir in GetValidDirections())
+            {
+                if (Is180Turn(currentDir, possibleDir)) continue;
+
+                if (grid.IsNeighborCellAIWalkable(currentPos, possibleDir))
+                {
+                    walkableDirs.Add(possibleDir);
+                }
+            }
 
             Vector3 intermediateTarget = currentPos;
-            Vector2 nextDir = default;
 
-            float minDistance = float.MaxValue;
+            Vector2 decidedDirection = walkableDirs[Random.Range(0, walkableDirs.Count)];
 
-            foreach (Vector2 dir in walkableDirs)
+            intermediateTarget = grid.GetNeighborCellPosition(currentPos, decidedDirection);
+
+            return (decidedDirection, intermediateTarget);
+        }
+
+        public static (Vector2 newDir, Vector3 newTarget) GetNextEatenTarget(Vector2 currentDir,
+            Vector3 currentPos, Vector3 finalTargetPos = new())
+        {
+            GridManager grid = GridManager.Instance;
+
+            List<Vector2> walkableDirs = new();
+
+            foreach (Vector2 possibleDir in GetValidDirections())
             {
-                Vector3 neighborPosition = grid.GetNeighborCellPosition(currentPos, dir);
-                float distanceToTarget = Vector3.Distance(neighborPosition, finalTargetPos);
+                if (Is180Turn(currentDir, possibleDir)) continue;
 
-                if (distanceToTarget < minDistance)
+                if (grid.IsNeighborCellAIWalkable(currentPos, possibleDir))
                 {
-                    minDistance = distanceToTarget;
-                    intermediateTarget = neighborPosition;
-                    nextDir = dir;
+                    walkableDirs.Add(possibleDir);
                 }
             }
 
             //if (intermediateTarget == currentPos) throw new Exception("Check intermediate target navigation");
-            return (nextDir, intermediateTarget);
+            return GetClosestToTarget(walkableDirs, currentPos, finalTargetPos);
         }
-
+        
         public static bool Is180Turn(Vector2 oldDir, Vector2 newDir)
         {
             return newDir == -oldDir;
@@ -73,31 +102,34 @@ namespace Monsters
 
             return grid.HasReachedCellCenterInDirection(dir, currentPos);
         }
-
-        public static (Vector2 newDir, Vector3 newTarget) GetNextRandomTarget(Vector2 currentDir,
-            Vector3 currentPos)
+        
+        private static (Vector2 newDir, Vector3 newTarget) GetClosestToTarget(List<Vector2> walkableDirs,
+            Vector3 currentPos, Vector3 targetPos)
         {
+            Vector3 intermediateTarget = currentPos;
+            Vector2 nextDir = default;
+
             GridManager grid = GridManager.Instance;
 
-            List<Vector2> walkableDirs = new();
+            float minDistance = float.MaxValue;
 
-            foreach (Vector2 possibleDir in GetValidDirections())
+            foreach (Vector2 dir in walkableDirs)
             {
-                if (Is180Turn(currentDir, possibleDir)) continue;
+                Vector3 neighborPosition = grid.GetNeighborCellPosition(currentPos, dir);
+                float distanceToTarget = Vector3.Distance(neighborPosition, targetPos);
 
-                if (grid.IsNeighborCellAIWalkable(currentPos, possibleDir))
+                if (distanceToTarget < minDistance)
                 {
-                    walkableDirs.Add(possibleDir);
+                    minDistance = distanceToTarget;
+                    intermediateTarget = neighborPosition;
+                    nextDir = dir;
                 }
             }
 
-            Vector3 intermediateTarget = currentPos;
-
-            Vector2 decidedDirection = walkableDirs[Random.Range(0, walkableDirs.Count)];
-
-            intermediateTarget = grid.GetNeighborCellPosition(currentPos, decidedDirection);
-
-            return (decidedDirection, intermediateTarget);
+            return (nextDir, intermediateTarget);
         }
     }
 }
+
+public delegate (Vector2 newDir, Vector3 newTarget) GetNextTarget(Vector2 currentDir,
+    Vector3 currentPos, Vector3 finalTargetPos = new());

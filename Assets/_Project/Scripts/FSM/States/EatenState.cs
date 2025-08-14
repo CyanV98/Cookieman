@@ -26,6 +26,8 @@ namespace FSM.States
             }
             
             monsterController.FinalTarget = context.CurrentChamberPoint;
+
+            monsterController.GetNextIntermediateTarget = AINavigation.GetNextEatenTarget;
         }
 
         public override void Tick(GameObject owner, StateContext context)

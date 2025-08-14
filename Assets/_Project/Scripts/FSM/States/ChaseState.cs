@@ -9,6 +9,7 @@ namespace FSM.States
         public override void Enter(GameObject owner, StateContext context)
         {
             owner.GetComponent<MonsterAnimator>().SetDefault(true);
+            owner.GetComponent<MonsterController>().GetNextIntermediateTarget = AINavigation.GetNextDefaultTarget;
         }
 
         public override void Tick(GameObject owner, StateContext context)

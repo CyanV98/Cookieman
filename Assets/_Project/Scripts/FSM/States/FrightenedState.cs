@@ -11,7 +11,7 @@ namespace FSM.States
         
         public override void Enter(GameObject owner, StateContext context)
         {
-            owner.GetComponent<MonsterController>().RandomMovement = true;
+            owner.GetComponent<MonsterController>().GetNextIntermediateTarget = AINavigation.GetNextRandomTarget;
             owner.GetComponent<MonsterAnimator>().EnterFrightened();
 
             context.Timer = frightenedTime;
@@ -29,8 +29,6 @@ namespace FSM.States
 
         public override void Exit(GameObject owner, StateContext context)
         {
-            owner.GetComponent<MonsterController>().RandomMovement = false;
-            
             context.Timer = 0f;
         }
     }

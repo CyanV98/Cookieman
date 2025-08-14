@@ -15,10 +15,10 @@ namespace Monsters
         private GridManager _grid;
         private Vector2 _currentTarget;
         private Vector2 _currentDir;
+        
+        public GetNextTarget GetNextIntermediateTarget { get; set; }
 
         private Vector2 _finalTarget;
-
-        private bool _randomMovement;
 
         public Transform Player => player;
 
@@ -44,12 +44,6 @@ namespace Monsters
             }
         }
 
-        public bool RandomMovement
-        {
-            get => _randomMovement;
-            set => _randomMovement = value;
-        }
-
         public virtual void SetChaseTarget()
         {
         }
@@ -60,28 +54,24 @@ namespace Monsters
             _grid = GridManager.Instance;
 
             FinalTarget = _grid.GetNonWalkableStartPosition();
-            UpdateIntermediateTarget(transform.position, _finalTarget, false);
+            GetNextIntermediateTarget = AINavigation.GetNextDefaultTarget;
+            UpdateIntermediateTarget(transform.position, _finalTarget);
         }
 
         void Update()
         {
             if (AINavigation.HasReachedTargetCellCenter(_currentDir, transform.position, _currentTarget))
             {
-                UpdateIntermediateTarget(transform.position, _finalTarget, _randomMovement);
+                UpdateIntermediateTarget(transform.position, _finalTarget);
             }
 
             UnityEngine.Debug.DrawRay(transform.position, (Vector3)_currentTarget - transform.position, Color.cyan);
             transform.position = Vector2.MoveTowards(transform.position, _currentTarget, speed * Time.deltaTime);
         }
 
-        private void UpdateIntermediateTarget(Vector3 currentPos, Vector3 finalTargetPos, bool randomMovement)
+        private void UpdateIntermediateTarget(Vector3 currentPos, Vector3 finalTargetPos)
         {
-            (Vector2 newDir, Vector3 newTarget) result;
-            
-            if (randomMovement)
-                result = AINavigation.GetNextRandomTarget(_currentDir, currentPos);
-            else
-                result = AINavigation.GetNextIntermediateTarget(_currentDir, currentPos, finalTargetPos);
+            (Vector2 newDir, Vector3 newTarget) result = GetNextIntermediateTarget.Invoke(_currentDir, currentPos, finalTargetPos);
 
             CurrentDir = result.newDir;
             _currentTarget = result.newTarget;

@@ -13,6 +13,8 @@ public class LevelManager : MonoBehaviour
     private void Awake()
     {
         CurrentState = initialLevelState;
+        ResetScatterTimer();
+        ResetScatterTimer();
     }
 
     private void Update()
