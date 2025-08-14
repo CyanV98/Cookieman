@@ -5,7 +5,8 @@ namespace Monsters.Debug
 {
     public class MonsterDebugger : MonoBehaviour
     {
-        public PathArrow pathPrefab;
+        [SerializeField] private PathArrow pathPrefab;
+        [SerializeField,Min(1)] private int pathCount = 20;
     
         private MonsterController _monster;
         private readonly List<(Vector2 direction,Vector3 position)> _pathPositions = new();
@@ -35,7 +36,7 @@ namespace Monsters.Debug
             Vector2 finalTarget = _monster.FinalTarget;
             (Vector2 newDir, Vector2 newTarget) nextResult = (_monster.CurrentDir, _monster.CurrentTarget);
 
-            int counter = 15;
+            int counter = pathCount;
         
             while (finalTarget != nextResult.newTarget && counter > 0)
             {

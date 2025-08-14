@@ -8313,8 +8313,6 @@ Tilemap:
     m_Data: {fileID: -6087597796849352407, guid: 2afd1fd2be90d0044a83cd4b14579c2d, type: 3}
   - m_RefCount: 338
     m_Data: {fileID: 899835797254069730, guid: 2afd1fd2be90d0044a83cd4b14579c2d, type: 3}
-  - m_RefCount: 0
-    m_Data: {fileID: 0}
   m_TileMatrixArray:
   - m_RefCount: 471
     m_Data:
@@ -8442,24 +8440,6 @@ Tilemap:
       e31: 0
       e32: 0
       e33: 1
-  - m_RefCount: 0
-    m_Data:
-      e00: 0
-      e01: 0
-      e02: 0
-      e03: 9.914225e-21
-      e10: 0
-      e11: 0
-      e12: 0
-      e13: 7.1e-44
-      e20: 0
-      e21: 0
-      e22: 1e-45
-      e23: 9.077319e-36
-      e30: 0
-      e31: 0
-      e32: 0
-      e33: 4.5912e-41
   m_TileColorArray:
   - m_RefCount: 808
     m_Data: {r: 1, g: 1, b: 1, a: 1}
@@ -8501,7 +8481,7 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 552143330280958, guid: aa938b2fba8039a4e85f5f8dc6a173db, type: 3}
       propertyPath: m_IsActive
-      value: 0
+      value: 1
       objectReference: {fileID: 0}
     - target: {fileID: 1459218142012325825, guid: aa938b2fba8039a4e85f5f8dc6a173db, type: 3}
       propertyPath: player
@@ -8566,7 +8546,7 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 552143330280958, guid: b7820bdb0416262418c775caf6384c86, type: 3}
       propertyPath: m_IsActive
-      value: 0
+      value: 1
       objectReference: {fileID: 0}
     - target: {fileID: 4274024496476921833, guid: b7820bdb0416262418c775caf6384c86, type: 3}
       propertyPath: m_LocalPosition.x
@@ -8631,7 +8611,7 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 552143330280958, guid: b02b59d376a7173409fde40d7d59ed66, type: 3}
       propertyPath: m_IsActive
-      value: 0
+      value: 1
       objectReference: {fileID: 0}
     - target: {fileID: 4274024496476921833, guid: b02b59d376a7173409fde40d7d59ed66, type: 3}
       propertyPath: m_LocalPosition.x

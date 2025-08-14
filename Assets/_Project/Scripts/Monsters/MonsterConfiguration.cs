@@ -1,3 +1,4 @@
+using System.Collections.Generic;
 using UnityEngine;
 
 namespace Monsters
@@ -8,6 +9,7 @@ namespace Monsters
         [field: SerializeField] public Color Color { get; private set; }
         [field: SerializeField] public Vector3 ScatterPosition { get; private set; }
         [field: SerializeField] public Vector3 ChaseDefaultPosition { get; private set; }
+        [field:SerializeField] public List<Vector3> ChamberPoints { get; private set; }
 
     }
 }
