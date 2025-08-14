@@ -37,10 +37,26 @@ namespace Grid
 
         public bool IsValidCell(GridCell cellToCheck)
         {
-            if (cellToCheck.X > _width || cellToCheck.Y > _height) return false;
+            if (cellToCheck.X >= _width || cellToCheck.Y >= _height) return false;
             if (cellToCheck.X < 0 || cellToCheck.Y < 0) return false;
 
             return true;
+        }
+
+        public GridCell ConvertToValidCell(GridCell cellToConvert)
+        {
+            if(IsValidCell(cellToConvert)) return cellToConvert;
+            
+            int validX = cellToConvert.X;
+            int validY = cellToConvert.Y;
+            
+            if(validX < 0) validX = 0;
+            if(validY < 0) validY = 0;
+            
+            if(validX >= _width) validX = _width - 1;
+            if(validY >= _height) validY = _height - 1;
+            
+            return new GridCell(validX, validY);
         }
 
         public GridCell GetNeighborCell(GridCell currentCell, Direction direction)
@@ -65,9 +81,7 @@ namespace Grid
                     throw new Exception("Invalid direction in GetNeighborCell");
             }
 
-            if (!IsValidCell(neighborCell)) throw new Exception("Neighbor Cell is outside of the grid");
-
-            return neighborCell;
+            return ConvertToValidCell(neighborCell);
         }
     }
 

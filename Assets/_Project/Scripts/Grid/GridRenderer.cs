@@ -24,10 +24,8 @@ namespace Grid
         {
             Vector3 originReverted = worldPosition - _origin;
             GridCell cellCandidate = new(Mathf.FloorToInt(originReverted.x), Mathf.FloorToInt(originReverted.y));
-
-            if (!_grid.IsValidCell(cellCandidate)) throw new System.Exception("Invalid cell");
-
-            return cellCandidate;
+            
+            return _grid.ConvertToValidCell(cellCandidate);
         }
 
         public Vector3 GetCellCenter(GridCell cell)

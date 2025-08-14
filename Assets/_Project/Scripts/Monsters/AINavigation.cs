@@ -1,5 +1,4 @@
-﻿using System;
-using System.Collections.Generic;
+﻿using System.Collections.Generic;
 using Grid;
 using UnityEngine;
 using Random = UnityEngine.Random;
@@ -43,7 +42,7 @@ namespace Monsters
                 }
             }
 
-            if (intermediateTarget == currentPos) throw new Exception("Check intermediate target navigation");
+            //if (intermediateTarget == currentPos) throw new Exception("Check intermediate target navigation");
             return (nextDir, intermediateTarget);
         }
 
