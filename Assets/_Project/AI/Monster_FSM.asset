@@ -12,5 +12,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 7eec392b108b4fb199b17eef1aafe3ed, type: 3}
   m_Name: Monster_FSM
   m_EditorClassIdentifier: Assembly-CSharp::FSM.StateMachine
-  initialState: {fileID: 11400000, guid: 7b66d26014268004a84ca6c898400425, type: 2}
-  transitions: []
+  initialState: {fileID: 11400000, guid: 1a158bcaab768c546adf6800efe26218, type: 2}
+  transitions:
+  - {fileID: 11400000, guid: b062e7d071ae35f409d849e4fc2ef854, type: 2}
+  - {fileID: 11400000, guid: 1a711a46b5ba01a4daa1e9454c4dd82d, type: 2}

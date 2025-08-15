@@ -2,6 +2,9 @@ using UnityEngine;
 
 public class LevelManager : MonoBehaviour
 {
+    //TODO to private
+    public bool isFrightened = false;
+
     [SerializeField] private MonsterLevelState initialLevelState = MonsterLevelState.Scatter;
     [SerializeField] private float scatterTimerMax = 10f;
     [SerializeField] private float chaseTimerMax = 20f;
@@ -42,26 +45,24 @@ public class LevelManager : MonoBehaviour
 
     private void CheckStateChange()
     {
-        switch (CurrentState)
+        if (CurrentState == MonsterLevelState.Scatter && _scatterTimer <= 0)
         {
-            case MonsterLevelState.Scatter:
-                if (_scatterTimer <= 0)
-                {
-                    ResetScatterTimer();
-                    CurrentState = MonsterLevelState.Chase;
-                    Debug.Log("Chase state");
-                }
+            ResetScatterTimer();
+            CurrentState = MonsterLevelState.Chase;
+            Debug.Log("Chase state");
+        }
 
-                break;
-            case MonsterLevelState.Chase:
-                if (_chaseTimer <= 0)
-                {
-                    ResetChaseTimer();
-                    CurrentState = MonsterLevelState.Scatter;
-                    Debug.Log("Scatter state");
-                }
+        if (CurrentState == MonsterLevelState.Chase && _chaseTimer <= 0)
+        {
+            ResetChaseTimer();
+            CurrentState = MonsterLevelState.Scatter;
+            Debug.Log("Scatter state");
+        }
 
-                break;
+        if (isFrightened && CurrentState != MonsterLevelState.Frightened)
+        {
+            CurrentState = MonsterLevelState.Frightened;
+            Debug.Log("Frightened state");
         }
     }
 }
@@ -70,5 +71,6 @@ public class LevelManager : MonoBehaviour
 public enum MonsterLevelState
 {
     Scatter = 0,
-    Chase = 1
+    Chase = 1,
+    Frightened = 2
 }

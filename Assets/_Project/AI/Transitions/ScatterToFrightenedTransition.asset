@@ -9,8 +9,8 @@ MonoBehaviour:
   m_GameObject: {fileID: 0}
   m_Enabled: 1
   m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 23c690ec26fd48f893ef4ae30229e598, type: 3}
-  m_Name: ScatterToChaseTransition
-  m_EditorClassIdentifier: Assembly-CSharp::FSM.Transitions.ScatterToChaseTransition
+  m_Script: {fileID: 11500000, guid: f175246f7ad34678865b68f3430c4a5f, type: 3}
+  m_Name: ScatterToFrightenedTransition
+  m_EditorClassIdentifier: Assembly-CSharp::FSM.Transitions.ScatterToFrightenedTransition
   fromState: {fileID: 11400000, guid: 1a158bcaab768c546adf6800efe26218, type: 2}
-  toState: {fileID: 11400000, guid: dafd45ba1fef7e041804a34d75c5821a, type: 2}
+  toState: {fileID: 11400000, guid: cfe0c5782dfa01341b77a20ef8377541, type: 2}
