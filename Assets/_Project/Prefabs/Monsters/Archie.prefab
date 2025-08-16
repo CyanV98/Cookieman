@@ -64,6 +64,10 @@ PrefabInstance:
       propertyPath: <Configuration>k__BackingField
       value: 
       objectReference: {fileID: 11400000, guid: f0079dc97e487dd47b207a0f36ec5b30, type: 2}
+    - target: {fileID: 7235716964328962360, guid: 0efd5ee96282d09468591e7134c39205, type: 3}
+      propertyPath: m_Enabled
+      value: 0
+      objectReference: {fileID: 0}
     m_RemovedComponents:
     - {fileID: 6618708337581121319, guid: 0efd5ee96282d09468591e7134c39205, type: 3}
     m_RemovedGameObjects: []

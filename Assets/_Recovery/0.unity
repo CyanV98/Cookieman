@@ -203,7 +203,7 @@ Transform:
   m_GameObject: {fileID: 316665895}
   serializedVersion: 2
   m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
-  m_LocalPosition: {x: -14.5, y: 0.5, z: 0}
+  m_LocalPosition: {x: -0.5, y: 3.5, z: 0}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_ConstrainProportionsScale: 0
   m_Children: []
@@ -4486,16 +4486,6 @@ Tilemap:
       m_TileObjectToInstantiateIndex: 65535
       dummyAlignment: 0
       m_AllTileFlags: 1073741826
-  - first: {x: -15, y: 0, z: 0}
-    second:
-      serializedVersion: 2
-      m_TileIndex: 0
-      m_TileSpriteIndex: 0
-      m_TileMatrixIndex: 0
-      m_TileColorIndex: 0
-      m_TileObjectToInstantiateIndex: 65535
-      dummyAlignment: 0
-      m_AllTileFlags: 1073741826
   - first: {x: -14, y: 0, z: 0}
     second:
       serializedVersion: 2
@@ -4767,16 +4757,6 @@ Tilemap:
       dummyAlignment: 0
       m_AllTileFlags: 1073741826
   - first: {x: 13, y: 0, z: 0}
-    second:
-      serializedVersion: 2
-      m_TileIndex: 0
-      m_TileSpriteIndex: 0
-      m_TileMatrixIndex: 0
-      m_TileColorIndex: 0
-      m_TileObjectToInstantiateIndex: 65535
-      dummyAlignment: 0
-      m_AllTileFlags: 1073741826
-  - first: {x: 14, y: 0, z: 0}
     second:
       serializedVersion: 2
       m_TileIndex: 0
@@ -8408,14 +8388,14 @@ Tilemap:
       m_AllTileFlags: 1073741826
   m_AnimatedTiles: {}
   m_TileAssetArray:
-  - m_RefCount: 302
+  - m_RefCount: 300
     m_Data: {fileID: 11400000, guid: a61504ab1bce12e4d859f882f02bc782, type: 2}
   - m_RefCount: 488
     m_Data: {fileID: 11400000, guid: 935b1b34214298d48b6f2bf15fa66e2f, type: 2}
   - m_RefCount: 20
     m_Data: {fileID: 11400000, guid: 20c06e531f5dc5f4f9bdc8aaebe96827, type: 2}
   m_TileSpriteArray:
-  - m_RefCount: 332
+  - m_RefCount: 330
     m_Data: {fileID: -5111575295794188215, guid: 2afd1fd2be90d0044a83cd4b14579c2d, type: 3}
   - m_RefCount: 110
     m_Data: {fileID: -5553625203000136214, guid: 2afd1fd2be90d0044a83cd4b14579c2d, type: 3}
@@ -8424,7 +8404,7 @@ Tilemap:
   - m_RefCount: 338
     m_Data: {fileID: 899835797254069730, guid: 2afd1fd2be90d0044a83cd4b14579c2d, type: 3}
   m_TileMatrixArray:
-  - m_RefCount: 473
+  - m_RefCount: 471
     m_Data:
       e00: 1
       e01: 0
@@ -8551,13 +8531,13 @@ Tilemap:
       e32: 0
       e33: 1
   m_TileColorArray:
-  - m_RefCount: 810
+  - m_RefCount: 808
     m_Data: {r: 1, g: 1, b: 1, a: 1}
   m_TileObjectToInstantiateArray: []
   m_AnimationFrameRate: 1
   m_Color: {r: 1, g: 1, b: 1, a: 1}
-  m_Origin: {x: -15, y: -16, z: 0}
-  m_Size: {x: 30, y: 31, z: 1}
+  m_Origin: {x: -14, y: -16, z: 0}
+  m_Size: {x: 28, y: 31, z: 1}
   m_TileAnchor: {x: 0.5, y: 0.5, z: 0}
   m_TileOrientation: 0
   m_TileOrientationMatrix:
@@ -8589,10 +8569,10 @@ PrefabInstance:
       propertyPath: m_Name
       value: Archie
       objectReference: {fileID: 0}
-    - target: {fileID: 1459218142012325825, guid: aa938b2fba8039a4e85f5f8dc6a173db, type: 3}
-      propertyPath: level
-      value: 
-      objectReference: {fileID: 493837101}
+    - target: {fileID: 552143330280958, guid: aa938b2fba8039a4e85f5f8dc6a173db, type: 3}
+      propertyPath: m_IsActive
+      value: 1
+      objectReference: {fileID: 0}
     - target: {fileID: 1459218142012325825, guid: aa938b2fba8039a4e85f5f8dc6a173db, type: 3}
       propertyPath: player
       value: 
@@ -8640,7 +8620,7 @@ PrefabInstance:
     - target: {fileID: 8901764171468220389, guid: aa938b2fba8039a4e85f5f8dc6a173db, type: 3}
       propertyPath: levelManager
       value: 
-      objectReference: {fileID: 493837101}
+      objectReference: {fileID: 1584894316}
     m_RemovedComponents: []
     m_RemovedGameObjects: []
     m_AddedGameObjects: []
@@ -8655,7 +8635,6 @@ GameObject:
   serializedVersion: 6
   m_Component:
   - component: {fileID: 493837100}
-  - component: {fileID: 493837101}
   m_Layer: 0
   m_Name: LEVEL
   m_TagString: Untagged
@@ -8678,27 +8657,9 @@ Transform:
   m_Children:
   - {fileID: 1556828130}
   - {fileID: 1760616168}
+  - {fileID: 1584894315}
   m_Father: {fileID: 0}
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
---- !u!114 &493837101
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 493837099}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 5049d6b7f940f7e4cb91ad0ee9a1f111, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: Assembly-CSharp::LevelManager
-  isFrightened: 0
-  <portalsConfiguration>k__BackingField: {fileID: 11400000, guid: e10da93697bacb04891379d7c32f837b, type: 2}
-  portalPrefab: {fileID: 3571881878818908128, guid: 182430dfb04ac9a408eda1b6c3fba42a, type: 3}
-  initialLevelState: 0
-  scatterTimerMax: 10
-  chaseTimerMax: 20
-  frightenedTimerMax: 10
 --- !u!1001 &845612028
 PrefabInstance:
   m_ObjectHideFlags: 0
@@ -8756,17 +8717,13 @@ PrefabInstance:
       value: 0
       objectReference: {fileID: 0}
     - target: {fileID: 8443116359114128370, guid: b7820bdb0416262418c775caf6384c86, type: 3}
-      propertyPath: level
-      value: 
-      objectReference: {fileID: 493837101}
-    - target: {fileID: 8443116359114128370, guid: b7820bdb0416262418c775caf6384c86, type: 3}
       propertyPath: player
       value: 
       objectReference: {fileID: 1414082391}
     - target: {fileID: 8901764171468220389, guid: b7820bdb0416262418c775caf6384c86, type: 3}
       propertyPath: levelManager
       value: 
-      objectReference: {fileID: 493837101}
+      objectReference: {fileID: 1584894316}
     m_RemovedComponents: []
     m_RemovedGameObjects: []
     m_AddedGameObjects: []
@@ -8829,17 +8786,13 @@ PrefabInstance:
       value: 0
       objectReference: {fileID: 0}
     - target: {fileID: 4874728678784767950, guid: b02b59d376a7173409fde40d7d59ed66, type: 3}
-      propertyPath: level
-      value: 
-      objectReference: {fileID: 493837101}
-    - target: {fileID: 4874728678784767950, guid: b02b59d376a7173409fde40d7d59ed66, type: 3}
       propertyPath: player
       value: 
       objectReference: {fileID: 1414082391}
     - target: {fileID: 8901764171468220389, guid: b02b59d376a7173409fde40d7d59ed66, type: 3}
       propertyPath: levelManager
       value: 
-      objectReference: {fileID: 493837101}
+      objectReference: {fileID: 1584894316}
     m_RemovedComponents: []
     m_RemovedGameObjects: []
     m_AddedGameObjects: []
@@ -8898,10 +8851,6 @@ PrefabInstance:
       value: 0
       objectReference: {fileID: 0}
     - target: {fileID: 8079281487290132672, guid: 46bbb58084a505a40ae13d1494bebf27, type: 3}
-      propertyPath: level
-      value: 
-      objectReference: {fileID: 493837101}
-    - target: {fileID: 8079281487290132672, guid: 46bbb58084a505a40ae13d1494bebf27, type: 3}
       propertyPath: speed
       value: 3
       objectReference: {fileID: 0}
@@ -8912,7 +8861,7 @@ PrefabInstance:
     - target: {fileID: 8901764171468220389, guid: 46bbb58084a505a40ae13d1494bebf27, type: 3}
       propertyPath: levelManager
       value: 
-      objectReference: {fileID: 493837101}
+      objectReference: {fileID: 1584894316}
     m_RemovedComponents: []
     m_RemovedGameObjects: []
     m_AddedGameObjects: []
@@ -8982,6 +8931,55 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: Assembly-CSharp::GridManager
   tilemap: {fileID: 366239888}
+--- !u!1 &1584894314
+GameObject:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  serializedVersion: 6
+  m_Component:
+  - component: {fileID: 1584894315}
+  - component: {fileID: 1584894316}
+  m_Layer: 0
+  m_Name: Level Manager
+  m_TagString: Untagged
+  m_Icon: {fileID: 0}
+  m_NavMeshLayer: 0
+  m_StaticEditorFlags: 0
+  m_IsActive: 1
+--- !u!4 &1584894315
+Transform:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1584894314}
+  serializedVersion: 2
+  m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
+  m_LocalPosition: {x: 0, y: 0, z: 0}
+  m_LocalScale: {x: 1, y: 1, z: 1}
+  m_ConstrainProportionsScale: 0
+  m_Children: []
+  m_Father: {fileID: 493837100}
+  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+--- !u!114 &1584894316
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1584894314}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 5049d6b7f940f7e4cb91ad0ee9a1f111, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: Assembly-CSharp::LevelManager
+  isFrightened: 0
+  initialLevelState: 0
+  scatterTimerMax: 10
+  chaseTimerMax: 20
+  frightenedTimerMax: 10
 --- !u!1 &1760616165
 GameObject:
   m_ObjectHideFlags: 0
@@ -9175,10 +9173,6 @@ PrefabInstance:
       propertyPath: m_LocalEulerAnglesHint.z
       value: 0
       objectReference: {fileID: 0}
-    - target: {fileID: 5420782204681058801, guid: 626fa767ac35446468664135871a6541, type: 3}
-      propertyPath: level
-      value: 
-      objectReference: {fileID: 493837101}
     m_RemovedComponents: []
     m_RemovedGameObjects: []
     m_AddedGameObjects: []

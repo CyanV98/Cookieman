@@ -2,7 +2,7 @@ using System.Collections.Generic;
 using UnityEngine;
 using UnityEngine.Tilemaps;
 
-namespace Tiles
+namespace Grid.Tiles
 {
     [CreateAssetMenu(fileName = "New Wall", menuName = "Cookieman/Tiles/Wall")]
     public class Wall : RuleTile<Wall.Neighbor>

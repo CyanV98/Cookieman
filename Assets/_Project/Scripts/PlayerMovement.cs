@@ -1,16 +1,17 @@
 using System;
 using Grid;
+using Level;
 using UnityEngine;
 using UnityEngine.InputSystem;
 
-public class PlayerMovement : MonoBehaviour
+public class PlayerMovement : MonoBehaviour, IPortable
 {
     public event Action<Vector2> OnDirectionChanged;
-    
+
     [SerializeField] private int speed = 3;
 
     public Vector2 Direction => _currentInputDir;
-    
+
     private bool _shouldMove = false;
     private Vector2 _previousInputDir;
     private Vector2 _currentInputDir;
@@ -18,6 +19,7 @@ public class PlayerMovement : MonoBehaviour
     private Vector2 _moveTarget;
 
     private GridManager _grid;
+    [SerializeField] private LevelManager level;
 
     private void Start()
     {
@@ -56,7 +58,7 @@ public class PlayerMovement : MonoBehaviour
 
         // fix for oscillating on one axis
         HandleDirSwitch(newDirection);
-        
+
         OnDirectionChanged?.Invoke(newDirection);
     }
 
@@ -99,5 +101,31 @@ public class PlayerMovement : MonoBehaviour
             return _grid.GetNeighborCellPosition(transform.position, dir);
 
         return _grid.GetCellPosition(transform.position);
+    }
+
+    public void Teleport(Vector3 portalPosition, Vector3 exitDirection)
+    {
+        Vector3 portalOne = _grid.GetCellPosition(level.portalsConfiguration.PortalOne);
+        Vector3 portalTwo = _grid.GetCellPosition(level.portalsConfiguration.PortalTwo);
+
+        portalPosition = _grid.GetCellPosition(portalPosition);
+
+        _currentInputDir = exitDirection;
+        _previousInputDir = exitDirection;
+
+        if (portalOne == portalPosition)
+        {
+            Vector3 nextCellToPortal = _grid.GetNeighborCellPosition(portalTwo, exitDirection);
+            transform.position = nextCellToPortal + exitDirection * 0.1f;
+            _moveTarget = _grid.GetNeighborCellPosition(nextCellToPortal, exitDirection);
+        }
+        else if (portalTwo == portalPosition)
+        {
+            Vector3 nextCellToPortal = _grid.GetNeighborCellPosition(portalOne, exitDirection);
+            transform.position = nextCellToPortal + exitDirection * 0.1f;
+            _moveTarget = _grid.GetNeighborCellPosition(nextCellToPortal, exitDirection);
+        }
+
+        OnDirectionChanged?.Invoke(_moveTarget);
     }
 }

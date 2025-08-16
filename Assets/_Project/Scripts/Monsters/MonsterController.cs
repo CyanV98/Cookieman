@@ -1,11 +1,13 @@
 using System;
 using Grid;
+using Level;
 using UnityEngine;
 
 namespace Monsters
 {
-    public class MonsterController : MonoBehaviour
+    public class MonsterController : MonoBehaviour, IPortable
     {
+        [SerializeField] private LevelManager level;
         [SerializeField] private Transform player;
         [SerializeField] private int speed = 3;
         [field: SerializeField] public MonsterConfiguration Configuration { get; private set; }
@@ -31,7 +33,7 @@ namespace Monsters
         public Vector2 CurrentDir
         {
             get => _currentDir;
-            set
+            private set
             {
                 _currentDir = value;
                 OnDirectionChanged?.Invoke(value);
@@ -75,6 +77,28 @@ namespace Monsters
 
             CurrentDir = result.newDir;
             _currentTarget = result.newTarget;
+        }
+
+        public void Teleport(Vector3 portalPosition, Vector3 exitDirection)
+        {
+            Vector3 portalOne = _grid.GetCellPosition(level.portalsConfiguration.PortalOne);
+            Vector3 portalTwo = _grid.GetCellPosition(level.portalsConfiguration.PortalTwo);
+
+            portalPosition = _grid.GetCellPosition(portalPosition);
+
+
+            if (portalOne == portalPosition)
+            {
+                Vector3 nextCellToPortal = _grid.GetNeighborCellPosition(portalTwo, exitDirection);
+                transform.position = nextCellToPortal + exitDirection * 0.1f;
+            }
+            else if (portalTwo == portalPosition)
+            {
+                Vector3 nextCellToPortal = _grid.GetNeighborCellPosition(portalOne, exitDirection);
+                transform.position = nextCellToPortal + exitDirection * 0.1f;
+            }
+
+            UpdateIntermediateTarget(transform.position, _finalTarget);
         }
     }
 }
