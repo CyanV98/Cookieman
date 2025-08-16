@@ -60,6 +60,10 @@ PrefabInstance:
       propertyPath: m_Name
       value: Freezy
       objectReference: {fileID: 0}
+    - target: {fileID: 6301392946811383623, guid: 0efd5ee96282d09468591e7134c39205, type: 3}
+      propertyPath: m_Enabled
+      value: 0
+      objectReference: {fileID: 0}
     - target: {fileID: 6618708337581121319, guid: 0efd5ee96282d09468591e7134c39205, type: 3}
       propertyPath: <Configuration>k__BackingField
       value: 
@@ -90,6 +94,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: b52922b185d242eb8161709d0660c28c, type: 3}
   m_Name: 
   m_EditorClassIdentifier: Assembly-CSharp::Monsters.FreezyController
+  level: {fileID: 0}
   player: {fileID: 0}
   speed: 3
   <Configuration>k__BackingField: {fileID: 11400000, guid: 6099a99525f00db488429daee1afdf5d, type: 2}

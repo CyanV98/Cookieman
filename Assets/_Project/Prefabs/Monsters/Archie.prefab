@@ -60,6 +60,10 @@ PrefabInstance:
       propertyPath: m_Name
       value: Archie
       objectReference: {fileID: 0}
+    - target: {fileID: 6301392946811383623, guid: 0efd5ee96282d09468591e7134c39205, type: 3}
+      propertyPath: m_Enabled
+      value: 0
+      objectReference: {fileID: 0}
     - target: {fileID: 6618708337581121319, guid: 0efd5ee96282d09468591e7134c39205, type: 3}
       propertyPath: <Configuration>k__BackingField
       value: 
@@ -94,6 +98,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 9c21dfb994ac446dbe728ac7a0ef6d9f, type: 3}
   m_Name: 
   m_EditorClassIdentifier: Assembly-CSharp::Monsters.ArchieController
+  level: {fileID: 0}
   player: {fileID: 0}
   speed: 3
   <Configuration>k__BackingField: {fileID: 11400000, guid: f0079dc97e487dd47b207a0f36ec5b30, type: 2}

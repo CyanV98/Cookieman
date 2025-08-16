@@ -105,8 +105,8 @@ public class PlayerMovement : MonoBehaviour, IPortable
 
     public void Teleport(Vector3 portalPosition, Vector3 exitDirection)
     {
-        Vector3 portalOne = _grid.GetCellPosition(level.portalsConfiguration.PortalOne);
-        Vector3 portalTwo = _grid.GetCellPosition(level.portalsConfiguration.PortalTwo);
+        Vector3 portalOne = _grid.GetCellPosition(level.PortalsConfiguration.PortalOne);
+        Vector3 portalTwo = _grid.GetCellPosition(level.PortalsConfiguration.PortalTwo);
 
         portalPosition = _grid.GetCellPosition(portalPosition);
 

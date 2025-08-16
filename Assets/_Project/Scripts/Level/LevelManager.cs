@@ -6,8 +6,8 @@ namespace Level
     {
         //TODO to private
         public bool isFrightened = false;
-
-        [field: SerializeField] public PortalsConfiguration portalsConfiguration { get; private set; }
+        [field: SerializeField] public SuperCookieConfiguration SuperCookieConfiguration { get; private set; }
+        [field: SerializeField] public PortalsConfiguration PortalsConfiguration { get; private set; }
         [SerializeField] private Portal portalPrefab;
 
         [SerializeField] private MonsterLevelState initialLevelState = MonsterLevelState.Scatter;
@@ -101,12 +101,12 @@ namespace Level
 
         private void CreatePortals()
         {
-            Portal portalOne = Instantiate(portalPrefab, portalsConfiguration.PortalOne, Quaternion.identity);
-            portalOne.ExitDirection = portalsConfiguration.PortalTwoEntryDirection;
+            Portal portalOne = Instantiate(portalPrefab, PortalsConfiguration.PortalOne, Quaternion.identity);
+            portalOne.ExitDirection = PortalsConfiguration.PortalTwoEntryDirection;
             portalOne.transform.SetParent(this.transform);
 
-            Portal portalTwo = Instantiate(portalPrefab, portalsConfiguration.PortalTwo, Quaternion.identity);
-            portalTwo.ExitDirection = portalsConfiguration.PortalOneEntryDirection;
+            Portal portalTwo = Instantiate(portalPrefab, PortalsConfiguration.PortalTwo, Quaternion.identity);
+            portalTwo.ExitDirection = PortalsConfiguration.PortalOneEntryDirection;
             portalTwo.transform.SetParent(this.transform);
         }
     }

@@ -61,6 +61,10 @@ PrefabInstance:
       value: Pochy
       objectReference: {fileID: 0}
     - target: {fileID: 6301392946811383623, guid: 0efd5ee96282d09468591e7134c39205, type: 3}
+      propertyPath: m_Enabled
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 6301392946811383623, guid: 0efd5ee96282d09468591e7134c39205, type: 3}
       propertyPath: pathPrefab
       value: 
       objectReference: {fileID: 5323730342755557767, guid: 1257653db7baea54da4513f6019fa241, type: 3}
@@ -94,6 +98,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 02d7f478eedc44588159dc0b96de421c, type: 3}
   m_Name: 
   m_EditorClassIdentifier: Assembly-CSharp::Monsters.PochyController
+  level: {fileID: 0}
   player: {fileID: 0}
   speed: 3
   <Configuration>k__BackingField: {fileID: 11400000, guid: 41116484af65f3c4b84d68c2a97925a0, type: 2}

@@ -2,7 +2,7 @@ using UnityEngine;
 
 namespace Level
 {
-    [CreateAssetMenu(fileName = "Portals Config", menuName = "Cookieman/Configurations/PortalsConfig")]
+    [CreateAssetMenu(fileName = "Portals Config", menuName = "Cookieman/Configurations/Portals")]
     public class PortalsConfiguration : ScriptableObject
     {
         [field:SerializeField] public Vector3 PortalOne {get; private set; }

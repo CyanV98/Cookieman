@@ -50,5 +50,15 @@ namespace Grid
         {
             return _gridRenderer.GetWorldPosition(new GridCell(0, 0));
         }
+
+        public GridObject[,] GetGridObjects()
+        {
+            return _grid.GetGridObjects();
+        }
+
+        public Vector3 GetWorldPosition(GridCell cellPosition)
+        {
+            return _gridRenderer.GetCellCenter(cellPosition);
+        }
     }
 }
