@@ -12,5 +12,5 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 1303871512024818bbf207b752bed684, type: 3}
   m_Name: FrightenedToChaseTransition
   m_EditorClassIdentifier: Assembly-CSharp::FSM.Transitions.FrightenedToChaseTransition
-  fromState: {fileID: 0}
-  toState: {fileID: 0}
+  fromState: {fileID: 11400000, guid: cfe0c5782dfa01341b77a20ef8377541, type: 2}
+  toState: {fileID: 11400000, guid: dafd45ba1fef7e041804a34d75c5821a, type: 2}

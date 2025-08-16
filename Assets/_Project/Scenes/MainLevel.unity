@@ -8979,6 +8979,7 @@ MonoBehaviour:
   initialLevelState: 0
   scatterTimerMax: 10
   chaseTimerMax: 20
+  frightenedTimerMax: 10
 --- !u!1 &1760616165
 GameObject:
   m_ObjectHideFlags: 0
@@ -9124,6 +9125,10 @@ PrefabInstance:
     serializedVersion: 3
     m_TransformParent: {fileID: 0}
     m_Modifications:
+    - target: {fileID: 849975433757686799, guid: 626fa767ac35446468664135871a6541, type: 3}
+      propertyPath: m_TagString
+      value: Player
+      objectReference: {fileID: 0}
     - target: {fileID: 1901926867062689230, guid: 626fa767ac35446468664135871a6541, type: 3}
       propertyPath: m_Name
       value: Cookieman

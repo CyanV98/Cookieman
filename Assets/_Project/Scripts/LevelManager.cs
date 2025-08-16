@@ -50,7 +50,7 @@ public class LevelManager : MonoBehaviour
 
     private void DecreaseScatterTimer() => _scatterTimer -= Time.deltaTime;
     private void DecreaseChaseTimer() => _chaseTimer -= Time.deltaTime;
-    private void DecreaseFrightenedTimer() => FrightenedTimer = FrightenedTimer - Time.deltaTime;
+    private void DecreaseFrightenedTimer() => FrightenedTimer -= Time.deltaTime;
 
     private void CheckStateChange()
     {

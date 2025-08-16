@@ -12,7 +12,8 @@ namespace FSM.States
         {
             owner.GetComponent<MonsterController>().GetNextIntermediateTarget = AINavigation.GetNextRandomTarget;
             owner.GetComponent<MonsterAnimator>().EnterFrightened();
-
+            
+            owner.GetComponentInChildren<MonsterCollision>().enabled = true;
         }
 
         public override void Tick(GameObject owner, StateContext context)
@@ -28,6 +29,8 @@ namespace FSM.States
         {
             context.FrightenedTimeOutSet = false;
             owner.GetComponent<MonsterAnimator>().SetFrightened(false);
+            
+            owner.GetComponentInChildren<MonsterCollision>().enabled = false;
         }
     }
 }

@@ -12,13 +12,7 @@ namespace Monsters
 
         public event Action<Vector2> OnDirectionChanged;
         
-        private GridManager _grid;
-        private Vector2 _currentTarget;
-        private Vector2 _currentDir;
-        
         public GetNextTarget GetNextIntermediateTarget { get; set; }
-
-        private Vector2 _finalTarget;
 
         public Transform Player => player;
 
@@ -47,7 +41,13 @@ namespace Monsters
         public virtual void SetChaseTarget()
         {
         }
+        
+        public bool IsEaten { get; set; }
 
+        private GridManager _grid;
+        private Vector2 _currentTarget;
+        private Vector2 _currentDir;
+        private Vector2 _finalTarget;
 
         private void Start()
         {
