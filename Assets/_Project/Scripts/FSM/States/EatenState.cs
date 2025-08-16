@@ -32,14 +32,24 @@ namespace FSM.States
 
         public override void Tick(GameObject owner, StateContext context)
         {
+            if (HasReachedFinalPosition(context)) return;
+            
+            MonsterController monsterController = owner.GetComponent<MonsterController>();
+            
             Vector3 monsterPosition = owner.transform.position;
-            if(HasReachedFinalPosition(context)) return;
                 
             if (Vector2.Distance(monsterPosition, context.CurrentChamberPoint) < 0.1f)
             {
                 context.CurrentChamberPointIndex++;
                 
-                owner.GetComponent<MonsterController>().FinalTarget = context.CurrentChamberPoint;
+                if (HasReachedFinalPosition(context))
+                {
+                    monsterController.IsEaten = false;
+                    return;
+                }
+                
+                monsterController.FinalTarget = context.CurrentChamberPoint;
+                
             }
         }
 
@@ -50,7 +60,7 @@ namespace FSM.States
 
         private bool HasReachedFinalPosition(StateContext context)
         {
-            return context.CurrentChamberPointIndex == context.ChamberPointCount;
+            return context.CurrentChamberPointIndex == context.ChamberPoints.Count;
         }
     }
 }

@@ -39,7 +39,7 @@ namespace Monsters
             {
                 if (Is180Turn(currentDir, possibleDir)) continue;
 
-                if (grid.IsNeighborCellAIWalkable(currentPos, possibleDir))
+                if (grid.IsNeighborCellWalkable(currentPos, possibleDir))
                 {
                     walkableDirs.Add(possibleDir);
                 }
