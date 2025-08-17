@@ -11,6 +11,7 @@ GameObject:
   - component: {fileID: 5598333851331597744}
   - component: {fileID: 3045850550270056506}
   - component: {fileID: 961589016373016645}
+  - component: {fileID: 6910905449072513504}
   m_Layer: 0
   m_Name: Colider
   m_TagString: Player
@@ -106,6 +107,19 @@ Rigidbody2D:
   m_SleepingMode: 1
   m_CollisionDetection: 0
   m_Constraints: 0
+--- !u!114 &6910905449072513504
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 849975433757686799}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: cdfbb808f7c74e14aff6825523df2b5f, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: Assembly-CSharp::Player.PlayerCollision
+  levelManager: {fileID: 0}
 --- !u!1 &1901926867062689230
 GameObject:
   m_ObjectHideFlags: 0

@@ -1,11 +1,10 @@
+using System;
 using UnityEngine;
 
 namespace Level
 {
     public class LevelManager : MonoBehaviour
     {
-        //TODO to private
-        public bool isFrightened = false;
         [field: SerializeField] public SuperCookieConfiguration SuperCookieConfiguration { get; private set; }
         [field: SerializeField] public PortalsConfiguration PortalsConfiguration { get; private set; }
         [SerializeField] private Portal portalPrefab;
@@ -22,6 +21,16 @@ namespace Level
         private float _scatterTimer;
         private float _chaseTimer;
         public float FrightenedTimer { get; private set; }
+
+        private void OnEnable()
+        {
+            GameEvents.OnSuperCookieEaten += SetToFrightened;
+        }
+
+        private void OnDisable()
+        {
+            GameEvents.OnSuperCookieEaten -= SetToFrightened;
+        }
 
         private void Awake()
         {
@@ -90,13 +99,6 @@ namespace Level
                 CurrentState = _lastState;
                 return;
             }
-
-            if (isFrightened && CurrentState != MonsterLevelState.Frightened)
-            {
-                CurrentState = MonsterLevelState.Frightened;
-                Debug.Log("Frightened state");
-                return;
-            }
         }
 
         private void CreatePortals()
@@ -108,6 +110,12 @@ namespace Level
             Portal portalTwo = Instantiate(portalPrefab, PortalsConfiguration.PortalTwo, Quaternion.identity);
             portalTwo.ExitDirection = PortalsConfiguration.PortalOneEntryDirection;
             portalTwo.transform.SetParent(this.transform);
+        }
+
+        private void SetToFrightened()
+        {
+            CurrentState = MonsterLevelState.Frightened;
+            Debug.Log("Frightened state");
         }
     }
 

@@ -8605,7 +8605,6 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 5049d6b7f940f7e4cb91ad0ee9a1f111, type: 3}
   m_Name: 
   m_EditorClassIdentifier: Assembly-CSharp::LevelManager
-  isFrightened: 0
   <SuperCookieConfiguration>k__BackingField: {fileID: 11400000, guid: 148fe9ae5cccdb749922db83e7864a49, type: 2}
   <PortalsConfiguration>k__BackingField: {fileID: 11400000, guid: e10da93697bacb04891379d7c32f837b, type: 2}
   portalPrefab: {fileID: 3571881878818908128, guid: 182430dfb04ac9a408eda1b6c3fba42a, type: 3}
@@ -9122,6 +9121,10 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 5420782204681058801, guid: 626fa767ac35446468664135871a6541, type: 3}
       propertyPath: level
+      value: 
+      objectReference: {fileID: 493837101}
+    - target: {fileID: 6910905449072513504, guid: 626fa767ac35446468664135871a6541, type: 3}
+      propertyPath: levelManager
       value: 
       objectReference: {fileID: 493837101}
     m_RemovedComponents: []

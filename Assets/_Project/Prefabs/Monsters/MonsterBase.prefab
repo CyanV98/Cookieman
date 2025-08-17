@@ -13,7 +13,7 @@ GameObject:
   - component: {fileID: 6059304633024495990}
   m_Layer: 0
   m_Name: collider
-  m_TagString: Untagged
+  m_TagString: Monster
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
@@ -100,7 +100,7 @@ GameObject:
   - component: {fileID: 7517557949528643073}
   m_Layer: 0
   m_Name: MonsterBase
-  m_TagString: Untagged
+  m_TagString: Monster
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
