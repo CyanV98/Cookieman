@@ -32,6 +32,7 @@ namespace Player
 
         private void PlayerDead()
         {
+            HandleDirectionState(Vector2.zero);
             _animator.SetTrigger(Dead);
         }
 
